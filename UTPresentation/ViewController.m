@@ -7,6 +7,8 @@
 //
 
 #import "ViewController.h"
+#import "SoundClipTableViewCell.h"
+#import "SoundsClip.h"
 
 @interface ViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -36,8 +38,15 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{//SoundClipTableViewCell
-    return [UITableViewCell new];
+{
+    SoundClipTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"SoundClipTableViewCell"];
+    
+    SoundsClip *clip = (SoundsClip*)self.soundClips[indexPath.row];
+    
+    cell.titleLabel.text = clip.title;
+    cell.titleLabel.text = clip.duration;
+    
+    return cell;
 }
 
 @end
