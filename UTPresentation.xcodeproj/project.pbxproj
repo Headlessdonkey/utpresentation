@@ -18,6 +18,7 @@
 		1E9FD7FF1AAFB7A5000C8856 /* SoundClipTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E9FD7FE1AAFB7A5000C8856 /* SoundClipTableViewCell.m */; };
 		1E9FD8031AAFBA71000C8856 /* SoundClipRespository.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E9FD8021AAFBA71000C8856 /* SoundClipRespository.m */; };
 		1E9FD8051AAFBEA5000C8856 /* FakeNetworkResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 1E9FD8041AAFBEA5000C8856 /* FakeNetworkResponse.json */; };
+		1E9FD80C1AAFEF14000C8856 /* AudioPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E9FD80B1AAFEF14000C8856 /* AudioPlayerViewController.m */; };
 		ABFE035ED1C14D674B0DB3D6 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D991468565DB49CE1D597F9 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -52,6 +53,9 @@
 		1E9FD8011AAFBA71000C8856 /* SoundClipRespository.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoundClipRespository.h; sourceTree = "<group>"; };
 		1E9FD8021AAFBA71000C8856 /* SoundClipRespository.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoundClipRespository.m; sourceTree = "<group>"; };
 		1E9FD8041AAFBEA5000C8856 /* FakeNetworkResponse.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = FakeNetworkResponse.json; sourceTree = "<group>"; };
+		1E9FD8061AAFEDA9000C8856 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		1E9FD80A1AAFEF14000C8856 /* AudioPlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioPlayerViewController.h; sourceTree = "<group>"; };
+		1E9FD80B1AAFEF14000C8856 /* AudioPlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioPlayerViewController.m; sourceTree = "<group>"; };
 		3D991468565DB49CE1D597F9 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		41CBC3A31F855C383BEB8EFC /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		7D716A2B99953BB96A451A93 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -108,6 +112,7 @@
 				1E9FD7D31AAFB353000C8856 /* Supporting Files */,
 				1E9FD7F91AAFB6A5000C8856 /* SoundClip.h */,
 				1E9FD7FA1AAFB6A5000C8856 /* SoundClip.m */,
+				1E9FD8061AAFEDA9000C8856 /* Constants.h */,
 				1E9FD8041AAFBEA5000C8856 /* FakeNetworkResponse.json */,
 			);
 			path = UTPresentation;
@@ -147,6 +152,8 @@
 				1E9FD7DD1AAFB353000C8856 /* Main.storyboard */,
 				1E9FD7FD1AAFB7A5000C8856 /* SoundClipTableViewCell.h */,
 				1E9FD7FE1AAFB7A5000C8856 /* SoundClipTableViewCell.m */,
+				1E9FD80A1AAFEF14000C8856 /* AudioPlayerViewController.h */,
+				1E9FD80B1AAFEF14000C8856 /* AudioPlayerViewController.m */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -314,6 +321,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1E9FD7DC1AAFB353000C8856 /* ViewController.m in Sources */,
+				1E9FD80C1AAFEF14000C8856 /* AudioPlayerViewController.m in Sources */,
 				1E9FD7D91AAFB353000C8856 /* AppDelegate.m in Sources */,
 				1E9FD7FF1AAFB7A5000C8856 /* SoundClipTableViewCell.m in Sources */,
 				1E9FD8031AAFBA71000C8856 /* SoundClipRespository.m in Sources */,

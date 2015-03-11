@@ -8,8 +8,8 @@
 
 #import "ViewController.h"
 #import "SoundClipTableViewCell.h"
-#import "SoundClip.h"
 #import "SoundClipRespository.h"
+#import "Constants.h"
 
 @interface ViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -60,6 +60,13 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return 44;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    SoundClip *clip = (SoundClip*)self.soundClips[indexPath.row];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:PLAY_SOUND_CLIP object:nil userInfo:@{@"clip":clip}];
 }
 
 @end
