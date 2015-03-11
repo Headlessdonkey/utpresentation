@@ -14,7 +14,7 @@
 		1E9FD7E11AAFB353000C8856 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1E9FD7E01AAFB353000C8856 /* Images.xcassets */; };
 		1E9FD7E41AAFB353000C8856 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1E9FD7E21AAFB353000C8856 /* LaunchScreen.xib */; };
 		1E9FD7F01AAFB353000C8856 /* UTPresentationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E9FD7EF1AAFB353000C8856 /* UTPresentationTests.m */; };
-		1E9FD7FB1AAFB6A5000C8856 /* SoundsClip.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E9FD7FA1AAFB6A5000C8856 /* SoundsClip.m */; };
+		1E9FD7FB1AAFB6A5000C8856 /* SoundClip.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E9FD7FA1AAFB6A5000C8856 /* SoundClip.m */; };
 		1E9FD7FF1AAFB7A5000C8856 /* SoundClipTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E9FD7FE1AAFB7A5000C8856 /* SoundClipTableViewCell.m */; };
 		1E9FD8031AAFBA71000C8856 /* SoundClipRespository.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E9FD8021AAFBA71000C8856 /* SoundClipRespository.m */; };
 		1E9FD8051AAFBEA5000C8856 /* FakeNetworkResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 1E9FD8041AAFBEA5000C8856 /* FakeNetworkResponse.json */; };
@@ -45,8 +45,8 @@
 		1E9FD7E91AAFB353000C8856 /* UTPresentationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UTPresentationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E9FD7EE1AAFB353000C8856 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1E9FD7EF1AAFB353000C8856 /* UTPresentationTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UTPresentationTests.m; sourceTree = "<group>"; };
-		1E9FD7F91AAFB6A5000C8856 /* SoundsClip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoundsClip.h; sourceTree = "<group>"; };
-		1E9FD7FA1AAFB6A5000C8856 /* SoundsClip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoundsClip.m; sourceTree = "<group>"; };
+		1E9FD7F91AAFB6A5000C8856 /* SoundClip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoundClip.h; sourceTree = "<group>"; };
+		1E9FD7FA1AAFB6A5000C8856 /* SoundClip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoundClip.m; sourceTree = "<group>"; };
 		1E9FD7FD1AAFB7A5000C8856 /* SoundClipTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoundClipTableViewCell.h; sourceTree = "<group>"; };
 		1E9FD7FE1AAFB7A5000C8856 /* SoundClipTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoundClipTableViewCell.m; sourceTree = "<group>"; };
 		1E9FD8011AAFBA71000C8856 /* SoundClipRespository.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoundClipRespository.h; sourceTree = "<group>"; };
@@ -106,8 +106,8 @@
 				1E9FD7E01AAFB353000C8856 /* Images.xcassets */,
 				1E9FD7E21AAFB353000C8856 /* LaunchScreen.xib */,
 				1E9FD7D31AAFB353000C8856 /* Supporting Files */,
-				1E9FD7F91AAFB6A5000C8856 /* SoundsClip.h */,
-				1E9FD7FA1AAFB6A5000C8856 /* SoundsClip.m */,
+				1E9FD7F91AAFB6A5000C8856 /* SoundClip.h */,
+				1E9FD7FA1AAFB6A5000C8856 /* SoundClip.m */,
 				1E9FD8041AAFBEA5000C8856 /* FakeNetworkResponse.json */,
 			);
 			path = UTPresentation;
@@ -318,7 +318,7 @@
 				1E9FD7FF1AAFB7A5000C8856 /* SoundClipTableViewCell.m in Sources */,
 				1E9FD8031AAFBA71000C8856 /* SoundClipRespository.m in Sources */,
 				1E9FD7D61AAFB353000C8856 /* main.m in Sources */,
-				1E9FD7FB1AAFB6A5000C8856 /* SoundsClip.m in Sources */,
+				1E9FD7FB1AAFB6A5000C8856 /* SoundClip.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

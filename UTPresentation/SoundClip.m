@@ -6,8 +6,8 @@
 //  Copyright (c) 2015 James Logan. All rights reserved.
 //
 
-#import "SoundsClip.h"
+#import "SoundClip.h"
 
-@implementation SoundsClip
+@implementation SoundClip
 
 @end

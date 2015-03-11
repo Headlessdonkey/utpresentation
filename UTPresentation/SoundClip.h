@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface SoundsClip : NSObject
+@interface SoundClip : NSObject
 
 @property (strong, nonatomic) NSString *title;
 @property (strong, nonatomic) NSString *duration;

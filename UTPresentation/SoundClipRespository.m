@@ -7,7 +7,7 @@
 //
 
 #import "SoundClipRespository.h"
-#import "SoundsClip.h"
+#import "SoundClip.h"
 #import <AFNetworking/AFNetworking.h>
 
 @implementation SoundClipRespository
@@ -73,7 +73,7 @@
     NSMutableArray *soundClips = [NSMutableArray new];
     
     for (NSDictionary *soundClipJson in JSON) {
-        SoundsClip *soundClip = [SoundsClip new];
+        SoundClip *soundClip = [SoundClip new];
         soundClip.title = soundClipJson[@"Title"];
         soundClip.duration = [self durationString:soundClipJson[@"Duration"]];
         

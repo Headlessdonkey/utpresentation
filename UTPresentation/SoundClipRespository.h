@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "SoundsClip.h"
+#import "SoundClip.h"
 
 typedef void (^SoundClipReturnBlock)(NSArray*);
 

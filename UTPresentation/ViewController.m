@@ -8,7 +8,7 @@
 
 #import "ViewController.h"
 #import "SoundClipTableViewCell.h"
-#import "SoundsClip.h"
+#import "SoundClip.h"
 #import "SoundClipRespository.h"
 
 @interface ViewController ()<UITableViewDelegate,UITableViewDataSource>
@@ -49,7 +49,7 @@
 {
     SoundClipTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"SoundClipTableViewCell"];
     
-    SoundsClip *clip = (SoundsClip*)self.soundClips[indexPath.row];
+    SoundClip *clip = (SoundClip*)self.soundClips[indexPath.row];
     
     cell.titleLabel.text = clip.title;
     cell.durationLabel.text = clip.duration;
