@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "SoundClipTableViewCell.h"
 #import "SoundsClip.h"
+#import "SoundClipRespository.h"
 
 @interface ViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -23,11 +24,18 @@
     [super viewDidLoad];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
+    [self getSoundClips];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)getSoundClips
+{
+    SoundClipRespository *repo = [SoundClipRespository new];
+    __weak ViewController *weakSelf = self;
+    
+    [repo getSoundClips:^(NSArray *soundClips) {
+        weakSelf.soundClips = soundClips;
+        [weakSelf.tableView reloadData];
+    }];
 }
 
 #pragma mark UITableviewDataSource
@@ -44,9 +52,14 @@
     SoundsClip *clip = (SoundsClip*)self.soundClips[indexPath.row];
     
     cell.titleLabel.text = clip.title;
-    cell.titleLabel.text = clip.duration;
+    cell.durationLabel.text = clip.duration;
     
     return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 44;
 }
 
 @end
