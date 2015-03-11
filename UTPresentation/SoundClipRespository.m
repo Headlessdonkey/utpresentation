@@ -20,62 +20,67 @@
 //        });
 //    }
     
-    NSURL *URL = [NSURL URLWithString:@"https://api.clyp.it/FeaturedList/Featured"];
-    
-    AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc] initWithBaseURL:URL];
-    
-    [manager GET:[URL relativePath]
-      parameters:nil
-         success:^(AFHTTPRequestOperation *operation, id json) {
-             NSMutableArray *soundClips = [NSMutableArray new];
-             
-             for (NSDictionary *soundClipJson in json) {
-                 SoundsClip *soundClip = [SoundsClip new];
-                 soundClip.title = soundClipJson[@"Title"];
-                 soundClip.duration = [self durationString:soundClipJson[@"Duration"]];
-                 
-                 [soundClips addObject:soundClip];
-             }
-             
-             
-             if (completion) {
-                 completion(soundClips);
-             }
-         }
-         failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-             
-         }
-     ];
+//    NSURL *URL = [NSURL URLWithString:@"https://api.clyp.it/FeaturedList/Featured"];
+//    
+//    AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc] initWithBaseURL:URL];
+//    
+//    [manager GET:[URL relativePath]
+//      parameters:nil
+//         success:^(AFHTTPRequestOperation *operation, id JSON) {
+//
+//             if (completion) {
+//                 completion([self soundClipsFromJSON:JSON]);
+//             }
+//         }
+//         failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+//             
+//         }
+//     ];
 }
 
-- (NSArray*)getFakeSoundClips
+//- (NSArray*)getFakeSoundClips
+//{
+//    //Step one: Create a fake sound clip in code
+////    SoundsClip *clip = [SoundsClip new];
+////    clip.title = @"Fake Title";
+////    clip.duration = @"4:56";
+////    return @[clip];
+//    
+//    //Step two: Create sound clip for data stored on disk
+//    
+////    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"FakeNetworkResponse" ofType:@"json"];
+////    NSData *data = [NSData dataWithContentsOfFile:filePath];
+////    NSArray *json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
+////    NSLog(@"json: %@", json);
+////
+////    NSMutableArray *soundClips = [NSMutableArray new];
+////    
+////    for (NSDictionary *soundClipJson in json) {
+////        SoundsClip *soundClip = [SoundsClip new];
+////        soundClip.title = soundClipJson[@"Title"];
+////        soundClip.duration = [self durationString:soundClipJson[@"Duration"]];
+////        
+////        [soundClips addObject:soundClip];
+////    }
+////    
+////    return soundClips;
+////    return [self soundClipsFromJSON:json];
+////    return @[];
+//}
+
+-(NSArray*)soundClipsFromJSON:(NSArray*)JSON
 {
-    //Step one: Create a fake sound clip in code
-//    SoundsClip *clip = [SoundsClip new];
-//    clip.title = @"Fake Title";
-//    clip.duration = @"4:56";
-//    return @[clip];
+    NSMutableArray *soundClips = [NSMutableArray new];
     
-    //Step two: Create sound clip for data stored on disk
+    for (NSDictionary *soundClipJson in JSON) {
+        SoundsClip *soundClip = [SoundsClip new];
+        soundClip.title = soundClipJson[@"Title"];
+        soundClip.duration = [self durationString:soundClipJson[@"Duration"]];
+        
+        [soundClips addObject:soundClip];
+    }
     
-//    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"FakeNetworkResponse" ofType:@"json"];
-//    NSData *data = [NSData dataWithContentsOfFile:filePath];
-//    NSArray *json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
-//    NSLog(@"json: %@", json);
-//    
-//    NSMutableArray *soundClips = [NSMutableArray new];
-//    
-//    for (NSDictionary *soundClipJson in json) {
-//        SoundsClip *soundClip = [SoundsClip new];
-//        soundClip.title = soundClipJson[@"Title"];
-//        soundClip.duration = [self durationString:soundClipJson[@"Duration"]];
-//        
-//        [soundClips addObject:soundClip];
-//    }
-//    
-//    return soundClips;
-    
-    return @[];
+    return soundClips;
 }
 
 - (NSString*)durationString:(NSNumber*)durationNumber
