@@ -8,16 +8,44 @@
 
 #import "SoundClipRespository.h"
 #import "SoundsClip.h"
+#import <AFNetworking/AFNetworking.h>
 
 @implementation SoundClipRespository
 
 - (void)getSoundClips:(SoundClipReturnBlock)completion
 {
-    if (completion) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            completion([self getFakeSoundClips]);
-        });
-    }
+//    if (completion) {
+//        dispatch_async(dispatch_get_main_queue(), ^{
+//            completion([self getFakeSoundClips]);
+//        });
+//    }
+    
+    NSURL *URL = [NSURL URLWithString:@"https://api.clyp.it/FeaturedList/Featured"];
+    
+    AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc] initWithBaseURL:URL];
+    
+    [manager GET:[URL relativePath]
+      parameters:nil
+         success:^(AFHTTPRequestOperation *operation, id json) {
+             NSMutableArray *soundClips = [NSMutableArray new];
+             
+             for (NSDictionary *soundClipJson in json) {
+                 SoundsClip *soundClip = [SoundsClip new];
+                 soundClip.title = soundClipJson[@"Title"];
+                 soundClip.duration = [self durationString:soundClipJson[@"Duration"]];
+                 
+                 [soundClips addObject:soundClip];
+             }
+             
+             
+             if (completion) {
+                 completion(soundClips);
+             }
+         }
+         failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+             
+         }
+     ];
 }
 
 - (NSArray*)getFakeSoundClips
@@ -30,22 +58,24 @@
     
     //Step two: Create sound clip for data stored on disk
     
-    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"FakeNetworkResponse" ofType:@"json"];
-    NSData *data = [NSData dataWithContentsOfFile:filePath];
-    NSArray *json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
-    NSLog(@"json: %@", json);
+//    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"FakeNetworkResponse" ofType:@"json"];
+//    NSData *data = [NSData dataWithContentsOfFile:filePath];
+//    NSArray *json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
+//    NSLog(@"json: %@", json);
+//    
+//    NSMutableArray *soundClips = [NSMutableArray new];
+//    
+//    for (NSDictionary *soundClipJson in json) {
+//        SoundsClip *soundClip = [SoundsClip new];
+//        soundClip.title = soundClipJson[@"Title"];
+//        soundClip.duration = [self durationString:soundClipJson[@"Duration"]];
+//        
+//        [soundClips addObject:soundClip];
+//    }
+//    
+//    return soundClips;
     
-    NSMutableArray *soundClips = [NSMutableArray new];
-    
-    for (NSDictionary *soundClipJson in json) {
-        SoundsClip *soundClip = [SoundsClip new];
-        soundClip.title = soundClipJson[@"Title"];
-        soundClip.duration = [self durationString:soundClipJson[@"Duration"]];
-        
-        [soundClips addObject:soundClip];
-    }
-    
-    return soundClips;
+    return @[];
 }
 
 - (NSString*)durationString:(NSNumber*)durationNumber
