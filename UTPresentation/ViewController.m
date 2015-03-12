@@ -20,6 +20,8 @@
 
 @implementation ViewController
 
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.tableView.delegate = self;
@@ -33,7 +35,7 @@
     __weak ViewController *weakSelf = self;
     
     [repo getSoundClips:^(NSArray *soundClips) {
-        weakSelf.soundClips = soundClips;
+        weakSelf.soundClips = [soundClips copy];
         [weakSelf.tableView reloadData];
     }];
 }
@@ -66,7 +68,9 @@
 {
     SoundClip *clip = (SoundClip*)self.soundClips[indexPath.row];
     
-    [[NSNotificationCenter defaultCenter] postNotificationName:PLAY_SOUND_CLIP object:nil userInfo:@{@"clip":clip}];
+    [[NSNotificationCenter defaultCenter] postNotificationName:PLAY_SOUND_CLIP
+                                                        object:nil
+                                                      userInfo:@{@"clip":clip,@"URL":clip.URL}];
 }
 
 @end

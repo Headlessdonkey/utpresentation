@@ -10,4 +10,8 @@
 
 @interface AudioPlayerViewController : UIViewController
 
++ (instancetype)sharedInstance;
+
+@property (weak, nonatomic) IBOutlet UIButton *playButton;
+
 @end

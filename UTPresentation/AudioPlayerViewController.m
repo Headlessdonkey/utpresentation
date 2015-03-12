@@ -8,27 +8,52 @@
 
 #import "AudioPlayerViewController.h"
 #import "Constants.h"
+#import "SoundClip.h"
+#import <AFNetworking/AFNetworking.h>
+#import <AVFoundation/AVFoundation.h>
 
 @interface AudioPlayerViewController ()
-
+@property (strong, nonatomic) AVPlayer *player;
+@property (strong, nonatomic) SoundClip *clip;
 @end
 
 @implementation AudioPlayerViewController
+
++ (instancetype)sharedInstance
+{
+    static AudioPlayerViewController *sharedPlayer = nil;
+    static dispatch_once_t onceToken;
+    
+    dispatch_once(&onceToken, ^{
+        sharedPlayer = [[self alloc] init];
+        [[NSNotificationCenter defaultCenter] addObserver:sharedPlayer
+                                                 selector:@selector(playSoundClip:)
+                                                     name:PLAY_SOUND_CLIP
+                                                   object:nil];
+    });
+    
+    return sharedPlayer;
+}
 
 - (void)viewDidLoad {
     
     [super viewDidLoad];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(playSoundClip:)
-                                                 name:PLAY_SOUND_CLIP
-                                               object:nil];
+   
     
 }
 
 - (void)playSoundClip:(NSNotification*)note
 {
-    
+    if (self.player.rate > 0 && [self.clip.URL isEqualToString:[[note userInfo] objectForKey:@"URL"]]) {
+        [self.player pause];
+    }
+    else
+    {
+        self.clip = [[note userInfo] objectForKey:@"clip"];
+        [self playFile: self.clip.URL];
+    }
+
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -40,14 +65,24 @@
                                                   object:nil];
 }
 
-/*
-#pragma mark - Navigation
+- (void)playFile:(NSString*)URL
+{
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+        NSError *setCategoryErr = nil;
+        NSError *activationErr  = nil;
+        [[AVAudioSession sharedInstance] setCategory: AVAudioSessionCategoryPlayback error:&setCategoryErr];
+        [[AVAudioSession sharedInstance] setActive:YES error:&activationErr];
+        
+        if (URL) {
+            
+            NSURL *audioUrl = [NSURL URLWithString:URL];
+            self.player = [[AVPlayer alloc] initWithPlayerItem:[[AVPlayerItem alloc] initWithURL:audioUrl]];
+            
+            self.player.actionAtItemEnd = AVPlayerActionAtItemEndPause;
+            
+            [self.player play];
+        }
 }
-*/
+
 
 @end

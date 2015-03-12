@@ -7,8 +7,11 @@
 //
 
 #import "AppDelegate.h"
+#import "AudioPlayerViewController.h"
 
 @interface AppDelegate ()
+
+@property (nonatomic, strong) AudioPlayerViewController *player;
 
 @end
 
@@ -16,7 +19,7 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    self.player = [AudioPlayerViewController sharedInstance];
     return YES;
 }
 
