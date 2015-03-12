@@ -14,58 +14,58 @@
 
 - (void)getSoundClips:(SoundClipReturnBlock)completion
 {
-    if (completion) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            completion([self getFakeSoundClips]);
-        });
-    }
+//    if (completion) {
+//        dispatch_async(dispatch_get_main_queue(), ^{
+//            completion([self getFakeSoundClips]);
+//        });
+//    }
     
-//    NSURL *URL = [NSURL URLWithString:@"https://api.clyp.it/FeaturedList/Featured"];
-////
-//    AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc] initWithBaseURL:URL];
-//
-//    [manager GET:[URL relativePath]
-//      parameters:nil
-//         success:^(AFHTTPRequestOperation *operation, id JSON) {
-//
-//             if (completion) {
-//                 completion([self soundClipsFromJSON:JSON]);
-//             }
-//         }
-//         failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-//             
-//         }
-//     ];
+    NSURL *URL = [NSURL URLWithString:@"https://api.clyp.it/FeaturedList/Featured"];
+//AFNeworking standard
+    AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc] initWithBaseURL:URL];
+
+    [manager GET:[URL relativePath]
+      parameters:nil
+         success:^(AFHTTPRequestOperation *operation, id JSON) {
+
+             if (completion) {
+                 completion([self soundClipsFromJSON:JSON]);
+             }
+         }
+         failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+             
+         }
+     ];
 }
 
 - (NSArray*)getFakeSoundClips
 {
     //Step one: Create a fake sound clip in code
-    SoundClip *clip = [SoundClip new];
-    clip.title = @"Fake Title";
-    clip.duration = @"4:56";
-    return @[clip];
+//    SoundClip *clip = [SoundClip new];
+//    clip.title = @"Fake Title";
+//    clip.duration = @"4:56";
+//    return @[clip];
     
     //Step two: Create sound clip for data stored on disk
     
 //    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"FakeNetworkResponse" ofType:@"json"];
 //    NSData *data = [NSData dataWithContentsOfFile:filePath];
 //    NSArray *json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
-//    NSLog(@"json: %@", json);
+//    NSLog(@"json: %@", json); //<-- debugging
 //
 //    NSMutableArray *soundClips = [NSMutableArray new];
 //    
 //    for (NSDictionary *soundClipJson in json) {
-//        SoundClip *soundClip = [SoundClip new];
+//        SoundClip *soundClip = [SoundClip new]; //<-- like alloc int
 //        soundClip.title = soundClipJson[@"Title"];
 //        soundClip.duration = [self durationString:soundClipJson[@"Duration"]];
 //        
 //        [soundClips addObject:soundClip];
 //    }
-//    
+    
 //    return soundClips;
 //    return [self soundClipsFromJSON:json];
-//    return @[];
+    return @[];
 }
 
 -(NSArray*)soundClipsFromJSON:(NSArray*)JSON
@@ -76,6 +76,7 @@
         SoundClip *soundClip = [SoundClip new];
         soundClip.title = soundClipJson[@"Title"];
         soundClip.duration = [self durationString:soundClipJson[@"Duration"]];
+        soundClip.URL = soundClipJson[@"Mp3Url"];
         
         [soundClips addObject:soundClip];
     }

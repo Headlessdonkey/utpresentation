@@ -48,3 +48,9 @@
 #define COCOAPODS_VERSION_MINOR_AFNetworking_UIKit 5
 #define COCOAPODS_VERSION_PATCH_AFNetworking_UIKit 1
 
+// UITextField+Blocks
+#define COCOAPODS_POD_AVAILABLE_UITextField_Blocks
+#define COCOAPODS_VERSION_MAJOR_UITextField_Blocks 1
+#define COCOAPODS_VERSION_MINOR_UITextField_Blocks 0
+#define COCOAPODS_VERSION_PATCH_UITextField_Blocks 0
+
