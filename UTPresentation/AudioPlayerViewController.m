@@ -35,14 +35,6 @@
     return sharedPlayer;
 }
 
-- (void)viewDidLoad {
-    
-    [super viewDidLoad];
-    
-   
-    
-}
-
 - (void)playSoundClip:(NSNotification*)note
 {
     if (self.player.rate > 0 && [self.clip.URL isEqualToString:[[note userInfo] objectForKey:@"URL"]]) {
@@ -54,15 +46,6 @@
         [self playFile: self.clip.URL];
     }
 
-}
-
-- (void)viewWillDisappear:(BOOL)animated
-{
-    [super viewWillDisappear:animated];
-    
-    [[NSNotificationCenter defaultCenter] removeObserver:self
-                                                    name:PLAY_SOUND_CLIP
-                                                  object:nil];
 }
 
 - (void)playFile:(NSString*)URL
@@ -84,5 +67,11 @@
         }
 }
 
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:PLAY_SOUND_CLIP
+                                                  object:nil];
+}
 
 @end

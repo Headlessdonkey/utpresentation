@@ -43,27 +43,27 @@
     //Step one: Create a fake sound clip in code
 //    SoundClip *clip = [SoundClip new];
 //    clip.title = @"Fake Title";
-//    clip.duration = @"4:56";
+//    clip.duration = @"0:00";
 //    return @[clip];
     
     //Step two: Create sound clip for data stored on disk
-    
-//    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"FakeNetworkResponse" ofType:@"json"];
-//    NSData *data = [NSData dataWithContentsOfFile:filePath];
-//    NSArray *json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
-//    NSLog(@"json: %@", json); //<-- debugging
-//
+    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"FakeNetworkResponse" ofType:@"json"];
+    NSData *data = [NSData dataWithContentsOfFile:filePath];
+    NSArray *json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
+    NSLog(@"json: %@", json); //<-- debugging
+
 //    NSMutableArray *soundClips = [NSMutableArray new];
 //    
 //    for (NSDictionary *soundClipJson in json) {
-//        SoundClip *soundClip = [SoundClip new]; //<-- like alloc int
+//        SoundClip *soundClip = [SoundClip new];
 //        soundClip.title = soundClipJson[@"Title"];
 //        soundClip.duration = [self durationString:soundClipJson[@"Duration"]];
 //        
 //        [soundClips addObject:soundClip];
 //    }
-    
 //    return soundClips;
+    
+    
 //    return [self soundClipsFromJSON:json];
     return @[];
 }
